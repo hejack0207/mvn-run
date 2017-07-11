@@ -11,3 +11,5 @@ target/
 *.ear
 hs_err_pid*
 cache/ 
+.idea/
+mvnrun-maven-plugin.iml

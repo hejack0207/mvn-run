@@ -15,6 +15,7 @@ public class MavenRunApp
 			System.out.println("Usage:\r\njava -jar mvnrun.jar groupId:artifactId:version parameters");
 			return;
 		}
+		System.out.println(args[0]);
 
 		String artifact = args[0];
 		String[] arguments = new String[args.length - 1];
