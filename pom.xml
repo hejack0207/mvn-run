@@ -120,6 +120,9 @@
 					<mainClass>fr.lteconsulting.mvnrun.MavenRunApp</mainClass>
 					<arguments>
 						<argument>org.sharpx.utils:jdbc-ping:1.0.0-SNAPSHOT</argument>
+						<argument>--url</argument>
+						<!--<argument>jdbc:oracle:thin:@192.168.21.249:1521:gjzs</argument>-->
+						<argument>jdbc:oracle:thin:gjzspt/12345678@192.168.21.249:1521:gjzs</argument>
 					</arguments>
 					<classpathScope>compile</classpathScope>
 				</configuration>
