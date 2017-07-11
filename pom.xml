@@ -50,7 +50,7 @@
 		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
-			<version>3.0.8</version>
+			<version>3.0.15</version>
 		</dependency>
 	</dependencies>
 
@@ -104,6 +104,25 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>fr.lteconsulting.mvnrun.MavenRunApp</mainClass>
+					<arguments>
+						<argument>org.sharpx.utils:jdbc-ping:1.0.0-SNAPSHOT</argument>
+					</arguments>
+					<classpathScope>compile</classpathScope>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

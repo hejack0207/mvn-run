@@ -15,6 +15,7 @@ public class MavenRun
 {
 	private static MavenResolverSystem resolver()
 	{
+		//Maven.configureResolver().workOffline();
 		return Maven.resolver();
 	}
 
