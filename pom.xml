@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>fr.lteconsulting</groupId>
-	<artifactId>mvnrun-maven-plugin</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>maven-plugin</packaging>
+	<artifactId>mvnrun-cli</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<name>mvn-run</name>
 	<url>http://maven.apache.org</url>
@@ -127,6 +127,47 @@
 					<classpathScope>compile</classpathScope>
 				</configuration>
 			</plugin>
+		      <plugin>
+			<artifactId>jdeb</artifactId>
+			<groupId>org.vafer</groupId>
+			<version>1.5</version>
+			<executions>
+			  <execution>
+			    <phase>package</phase>
+			    <goals>
+			      <goal>jdeb</goal>
+			    </goals>
+			    <configuration>
+			      <dataSet>
+					<data>
+					  <type>file</type>
+					  <src>${project.basedir}/mvnrun.sh</src>
+					  <dst>/opt/${artifactId}/mvnrun.sh</dst>
+						<mapper>
+							<type>perm</type>
+							<filemode>755</filemode>
+						</mapper>
+					</data>
+					<data>
+						<type>file</type>
+						<src>${project.build.directory}/mvnrun.jar</src>
+						<dst>/opt/${artifactId}/mvnrun.jar</dst>
+					</data>
+					<data>
+					  <type>link</type>
+					  <linkName>/usr/local/bin/mvnrun</linkName>
+					  <linkTarget>/opt/${artifactId}/mvnrun.sh</linkTarget>
+						<mapper>
+							<type>perm</type>
+							<filemode>755</filemode>
+						</mapper>
+					  <symlink>true</symlink>
+					</data>
+			      </dataSet>
+			    </configuration>
+			  </execution>
+			</executions>
+		      </plugin>
 		</plugins>
 	</build>
 </project>
