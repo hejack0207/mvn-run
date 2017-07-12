@@ -1,0 +1,10 @@
+Package: mvnrun-cli
+Version: 1.0.0-SNAPSHOT
+Section: misc
+Priority: optional
+Architecture: all
+Depends: jdk (>= 1.7)
+Maintainer: hejack0207 <hejack0207@sina.com>
+Description: command line tools to launch any maven artifacts by groupid,artifact name and version
+Distribution: development
+Depends: default-jre | java7-runtime
