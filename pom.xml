@@ -150,7 +150,7 @@
                             <dataSet>
                                 <data>
                                     <type>file</type>
-                                    <src>${project.basedir}/mvnrun.sh</src>
+                                    <src>${project.basedir}/src/main/resources/mvnrun.sh</src>
                                     <dst>/opt/${artifactId}/mvnrun.sh</dst>
                                     <mapper>
                                         <type>perm</type>

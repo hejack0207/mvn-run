@@ -24,7 +24,7 @@ public class MavenRunApp
 	@Parameter(names = {"--verbose", "-V"}, description = "verbose")
 	boolean verbose = false;
 
-	@Parameter(names = "--help", help = true)
+	@Parameter(names = {"--help", "-h"}, help = true)
 	private boolean help;
 
 	public static void main(String[] args) {
