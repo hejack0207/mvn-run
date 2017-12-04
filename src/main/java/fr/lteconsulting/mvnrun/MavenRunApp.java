@@ -19,7 +19,7 @@ public class MavenRunApp
 	String mainClass;
 
 	@Parameter(description = "arguments to main-class")
-	List<String> arguments;
+	List<String> arguments = new ArrayList<String>();
 
 	@Parameter(names = {"--verbose", "-V"}, description = "verbose")
 	boolean verbose = false;
