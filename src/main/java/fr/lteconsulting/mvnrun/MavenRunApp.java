@@ -1,6 +1,7 @@
 package fr.lteconsulting.mvnrun;
 
 import java.util.List;
+import java.util.ArrayList;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
