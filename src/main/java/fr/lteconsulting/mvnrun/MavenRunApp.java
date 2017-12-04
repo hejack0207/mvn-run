@@ -15,7 +15,7 @@ public class MavenRunApp
 	@Parameter(names = {"--artifact", "-a"}, description = "like groupId:artifactId:version", required = true)
 	String artifact;
 
-	@Parameter(names = {"--mainclass", "-m"}, description = "main class name, like org.sharpx.cli.Main", required = true)
+	@Parameter(names = {"--mainclass", "-m"}, description = "main class name, like org.sharpx.cli.Main", required = false)
 	String mainClass;
 
 	@Parameter(description = "arguments to main-class")
@@ -40,6 +40,6 @@ public class MavenRunApp
 	}
 
 	void run(){
-		MavenRun.run(artifact, arguments.toArray(new String[0]), mainClass);
+		MavenRun.run(artifact, arguments.toArray(new String[0]), mainClass, !verbose);
 	}
 }

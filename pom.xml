@@ -67,7 +67,7 @@
                 <artifactId>maven-plugin-plugin</artifactId>
                 <version>3.2</version>
                 <configuration>
-                    <goalPrefix>mvnrun-maven-plugin</goalPrefix>
+                    <goalPrefix>mvnrun</goalPrefix>
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                 </configuration>
                 <executions>

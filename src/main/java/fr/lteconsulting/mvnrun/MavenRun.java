@@ -37,9 +37,15 @@ public class MavenRun
 		return sb.toString();
 	}
 
-	public static void run(String artifact, String[] args, String className)
+	private static void log(boolean quiet, String message){
+		if(!quiet){
+			System.err.println(message);
+		}
+	}
+
+	public static void run(String artifact, String[] args, String className, boolean quiet)
 	{
-		System.out.println("Resolving artifacts...");
+		log(quiet,"Resolving artifacts...");
 
 		MavenResolverSystem resolver = resolver();
 
@@ -52,7 +58,7 @@ public class MavenRun
 		File jarFile = resolver.resolve(artifact).withoutTransitivity().asSingleFile();
 		if (jarFile == null)
 		{
-			System.out.println("Unable to find a jar file to launch for artifact " + artifact + ". Aborting.");
+			log(quiet,"Unable to find a jar file to launch for artifact " + artifact + ". Aborting.");
 			return;
 		}
 
@@ -70,17 +76,17 @@ public class MavenRun
 		for (int i = 0; i < args.length; i++)
 			commandLine += " " + args[i];
 
-		System.out.println("Command line : " + commandLine);
+		log(quiet,"Command line : " + commandLine);
 
 		try
 		{
-			System.out.println("");
-			System.out.println("Launching process...");
+			log(quiet,"");
+			log(quiet,"Launching process...");
 
 			Process process = Runtime.getRuntime().exec(commandLine);
 
-			System.out.println("");
-			System.out.println("Process launched.");
+			log(quiet,"");
+			log(quiet,"Process launched.");
 
 			InputStream stdin = process.getInputStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(stdin));
@@ -102,7 +108,7 @@ public class MavenRun
 			}
 			while (true);
 
-			System.out.println("Process terminated.");
+			log(quiet,"Process terminated.");
 		}
 		catch (Exception e)
 		{

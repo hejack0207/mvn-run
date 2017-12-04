@@ -41,8 +41,7 @@ public class MavenRunMojo extends AbstractMojo
 			}
 
 			String[] arguments = parameters != null ? parameters.split(" ") : new String[] {};
-
-			MavenRun.run(artifact, arguments, className);
+			MavenRun.run(artifact, arguments, className, false);
 		}
 		catch (Exception e)
 		{
