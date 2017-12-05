@@ -34,6 +34,42 @@ public class MavenRunApp
 
 	public static class IndexOptions {
 
+		@Parameter(names = {"--index", "-i"}, description = "Path to the index folder.", required = true)
+		String indexFolder;
+
+		@Parameter(names = {"--destination", "-d"}, description = "Target folder.", required = true)
+		String targetFolder = ".";
+
+		@Parameter(names = {"--repository", "-r"}, description = "Path to the Maven repository.", required = true)
+		String repoFolder;
+
+		@Parameter(names = {"--name", "-n"}, description = "Repository name.", required = true)
+		String repoName;
+
+		@Parameter(names = {"--type", "-t"}, description = "Indexer type (default, min, full or coma separated list of custom types).", required = true)
+		String type;
+
+		@Parameter(names = {"--quiet", "-q"}, description = "quiet")
+		boolean quiet = false;
+
+		@Parameter(names = {"--debug", "-X"}, description = "debug")
+		boolean debug = false;
+
+		@Parameter(names = {"--errors", "-e"}, description = "errors")
+		boolean errors = false;
+
+		@Parameter(names = {"--unpack", "-u"}, description = "Unpack an index file")
+		boolean unpack = false;
+
+		@Parameter(names = {"--checksums", "-s"}, description = "Create checksums for all files (sha1, md5).")
+		boolean createChecksum = false;
+
+		@Parameter(names = {"--chunks", "-c"}, description = "Create incremental chunks.")
+		boolean createChunks = false;
+
+		@Parameter(names = {"--keep", "-k"}, description = "Number of incremental chunks to keep.")
+		Integer chunksKeeped;
+
 	};
 
 	@Parameter(names = {"--verbose", "-V"}, description = "verbose")
@@ -67,5 +103,10 @@ public class MavenRunApp
 	}
 
 	void run(IndexOptions indexOptions){
+		try {
+			new MavenIndWriter().invokePlexusComponent(indexOptions,null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
