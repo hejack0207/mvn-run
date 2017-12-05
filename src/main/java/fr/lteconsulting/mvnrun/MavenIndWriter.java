@@ -67,10 +67,9 @@ public class MavenIndWriter {
     public void invokePlexusComponent(final IndexOptions cli, PlexusContainer plexus)
             throws Exception {
         final DefaultContainerConfiguration configuration = new DefaultContainerConfiguration();
-        configuration.setClassWorld(((DefaultPlexusContainer) plexus).getClassWorld());
+        //configuration.setClassWorld(((DefaultPlexusContainer) plexus).getClassWorld());
         configuration.setClassPathScanning(PlexusConstants.SCANNING_INDEX);
 
-        // replace plexus, as PlexusCli is blunt, does not allow to modify configuration
         plexus = new DefaultPlexusContainer(configuration);
 
         if (cli.quiet) {
