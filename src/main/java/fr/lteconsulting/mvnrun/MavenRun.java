@@ -65,12 +65,12 @@ public class MavenRun
 		String commandLine = "";
 		if (className == null)
 		{
-			commandLine = "java -cp " + join(classPath, ";") + " " + " -jar " + jarFile.getAbsolutePath();
+			commandLine = "java -cp " + join(classPath, File.pathSeparator) + " " + " -jar " + jarFile.getAbsolutePath();
 		}
 		else
 		{
 			classPath.add(jarFile.getAbsolutePath());
-			commandLine = "java -cp " + join(classPath, ";") + " " + " " + className;
+			commandLine = "java -cp " + join(classPath, File.pathSeparator) + " " + " " + className;
 		}
 
 		for (int i = 0; i < args.length; i++)
